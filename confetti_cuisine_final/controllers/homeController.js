@@ -37,3 +37,7 @@ exports.postedSignUpForm = (req, res) => {
 exports.showAbout = (req, res) => {
   res.render("about");
 };
+
+exports.showAndrew = (req,res) => {
+  res.render("Andrew");
+};
