@@ -33,3 +33,7 @@ exports.postedSignUpForm = (req, res) => {
   let formData = req.body
   res.render("thanks",{formData:formData});
 };
+
+exports.showAbout = (req, res) => {
+  res.render("about");
+};
