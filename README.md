@@ -1,1 +1,1 @@
-# COSI-152A-Team
+# Brandeis Timetable
