@@ -23,6 +23,10 @@ exports.showCourses = (req, res) => {
   });
 };
 
+exports.showBio = (req, res) => {
+  res.render("bio");
+}
+
 exports.showSignUp = (req, res) => {
   res.render("contact", {
     date: new Date(),

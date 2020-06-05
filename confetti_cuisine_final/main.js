@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
 app.get("/about",homeController.showAbout);
 app.get("/courses", homeController.showCourses);
 app.get("/contact", homeController.showSignUp);
+app.get("/bio", homeController.showBio);
 app.post("/contact", homeController.postedSignUpForm);
 
 app.use(errorController.pageNotFoundError);
