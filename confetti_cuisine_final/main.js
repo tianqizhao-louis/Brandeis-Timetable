@@ -24,8 +24,8 @@ app.get("/", (req, res) => {
 app.get("/about",homeController.showAbout);
 app.get("/courses", homeController.showCourses);
 app.get("/contact", homeController.showSignUp);
+app.get("/andrew", homeController.showAndrew);
 app.post("/contact", homeController.postedSignUpForm);
-app.post("/andrew", homeController.showAndrew);
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);

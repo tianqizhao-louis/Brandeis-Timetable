@@ -39,5 +39,5 @@ exports.showAbout = (req, res) => {
 };
 
 exports.showAndrew = (req,res) => {
-  res.render("Andrew");
+  res.render("andrew");
 };
