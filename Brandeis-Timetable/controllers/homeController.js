@@ -45,3 +45,7 @@ exports.showAbout = (req, res) => {
 exports.showAndrew = (req,res) => {
   res.render("andrew");
 };
+
+exports.showJulian = (req,res) => {
+  res.render("julian");
+}
