@@ -59,3 +59,18 @@ a {
   background-color: #ffb99f;
   color: #ed4a0f;
 }
+
+.about_title{
+  text-align: center;
+  color: rgb(28, 48, 158);
+  font-size: 42pt;
+}
+
+.about_section_title{
+  color: rgb(138, 150, 29);;
+  font-size: 24pt;
+}
+
+.about_section_content{
+  color: rgb(0, 0, 0);
+}
