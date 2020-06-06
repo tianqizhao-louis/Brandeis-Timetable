@@ -49,3 +49,7 @@ exports.showAndrew = (req,res) => {
 exports.showJulian = (req,res) => {
   res.render("julian");
 }
+
+exports.showTianqi = (req, res) => {
+  res.render("tianqi");
+}

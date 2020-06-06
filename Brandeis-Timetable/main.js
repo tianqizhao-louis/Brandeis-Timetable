@@ -27,6 +27,7 @@ app.get("/contact", homeController.showSignUp);
 app.get("/bio", homeController.showBio);
 app.get("/andrew", homeController.showAndrew);
 app.get("/julian",homeController.showJulian);
+app.get("/tianqi",homeController.showTianqi);
 app.post("/contact", homeController.postedSignUpForm);
 
 app.use(errorController.pageNotFoundError);
