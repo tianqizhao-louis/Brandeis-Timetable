@@ -74,3 +74,7 @@ a {
 .about_section_content{
   color: rgb(0, 0, 0);
 }
+.grid_container{
+  grid-template-columns: [first] auto [second] auto [third] auto [fourth] auto [last];
+  grid-template-rows: [first] auto [second] auto [third] auto [last];
+}
