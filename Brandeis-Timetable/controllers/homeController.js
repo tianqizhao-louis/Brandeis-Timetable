@@ -15,6 +15,30 @@ var courses = [
   }
 ];
 
+var database = [
+  {
+    Department: "Anthroplogy",
+    Professor: "Srgt. Johnson",
+    Course: "Anth99",
+    TAs: ["Michelle Obama", "Harrison Ford", "Rachel Carson"],
+    Bugs: ["Cortana", "Shulem Shtisel"]
+  },
+  {
+    Department: "Anthroplogy",
+    Professor: "Master Chief",
+    Course: "Anth126",
+    TAs: ["John Stewart", "Harrison Ford", "Whoopie Goldeberg"],
+    Bugs: ["Cortana", "Big Bird"]
+  },
+  {
+    Department: "COSI",
+    Professor: "Geroge Lopez",
+    Course: "Cosi101",
+    TAs: ["Stan Marsh", "Randy Marsh"],
+    Bugs: []
+  }
+];
+
 exports.showCourses = (req, res) => {
   res.render("courses", {
     offeredCourses: courses,
