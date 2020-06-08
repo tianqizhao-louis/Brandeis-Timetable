@@ -3,7 +3,7 @@
 body {
   margin: 0;
   padding-top: 150px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Times New Roman", Tahoma, Geneva, Verdana, sans-serif;
   color: #625a56;
 }
 
@@ -18,9 +18,9 @@ body {
 }
 
 #title {
-  color: #625a56;
+  color: #2B22AA;
   margin: 0;
-  font-family: "Baloo Bhaina";
+  font-family: "Courier New";
   text-transform: uppercase;
 }
 
