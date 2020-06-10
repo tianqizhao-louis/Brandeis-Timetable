@@ -13,7 +13,7 @@ mongoose.connect(
 
 const db = mongoose.connection;
 db.on('error', ()=>console.log("connection error"))
-db.once('open', ()=>console.log("We connected at " +new Date()))  
+db.once('open', ()=>console.log("We connected at " +new Date()))
 
 app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 3000);
@@ -39,6 +39,7 @@ app.get("/julian",homeController.showJulian);
 app.get("/test_prof_profile",homeController.showTestProf);
 app.get("/test_class_schedule",homeController.showTestSchedule);
 app.post("/contact", homeController.postedSignUpForm);
+
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
