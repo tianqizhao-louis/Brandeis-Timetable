@@ -73,7 +73,10 @@ exports.showAndrew = (req,res) => {
 exports.showJulian = (req,res) => {
   res.render("julian");
 }
-
-exports.showTianqi = (req, res) => {
-  res.render("tianqi");
+exports.showTestProf = (req,res) => {
+  res.render("test_prof_profile");
 }
+exports.showTestSchedule = (req,res) => {
+  res.render("test_class_schedule");
+}
+

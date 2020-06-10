@@ -1,12 +1,12 @@
 {
-  "name": "confetti_cuisine",
+  "name": "Brandeis-Timetable",
   "version": "1.0.0",
   "description": "A site for booking classes for cooking.",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Jon Wexler",
+  "author": "Julian Berlin",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.6.1",

@@ -75,6 +75,51 @@ a {
   color: rgb(0, 0, 0);
 }
 .grid_container{
-  grid-template-columns: [first] auto [second] auto [third] auto [fourth] auto [last];
+  display: grid;
+  grid-template-columns: [first] auto [second] auto [third] auto [fourth] auto [fifth] auto [last];
   grid-template-rows: [first] auto [second] auto [third] auto [last];
+  border: 1px solid rgb(0, 0, 0);
+  place-self: center;
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+}
+
+.grid_header{
+  grid-row: first/second;
+  background-color: rgb(102, 129, 219);
+}
+.grid_content{
+  background-color: rgb(114, 207, 250);
+  border: 1px solid salmon;
+}
+.grid_content .hover_test {
+  display: none;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
+  background-color: #fff;
+  padding: .5em;
+}
+.grid-content:hover .hover_test {
+  display: block;
+}
+
+.schedule_container{
+  display: grid;
+  grid-template-columns: repeat(8, auto);
+  grid-template-rows: repeat(84, auto);
+  border: 1px solid rgb(0, 0, 0);
+  place-self: center;
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+  grid-auto-flow: row;
+}
+
+.schedule_header{
+  background-color: rgb(102, 129, 219);
+}
+.schedule_content{
+  background-color: rgb(114, 207, 250);
+  border: 1px solid salmon;
 }
