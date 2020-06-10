@@ -6,13 +6,14 @@ const express = require("express"),
   errorController = require("./controllers/errorController"),
   layouts = require("express-ejs-layouts");
 
-  /*const mongoose = require("mongoose");
-  mongoose.connect(
-    'mongodb://localhost/classSearch',
-    {useNewUrlParser:true});
-  const db = mongoose.connection;
-  db.on('error',(x)console.log("connection error"));
-  db.once('open',(x)=>console.log("We connected at "+new Date()));*/
+const mongoose = require("mongoose");
+mongoose.connect(
+  'mongodb://localhost/Brandeis-Timetable',
+  {useNewUrlParser:true})
+
+const db = mongoose.connection;
+db.on('error', ()=>console.log("connection error"))
+db.once('open', ()=>console.log("We connected at " +new Date()))  
 
 app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 3000);
