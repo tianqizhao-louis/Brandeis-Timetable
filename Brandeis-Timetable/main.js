@@ -68,8 +68,11 @@ app.post('Contact',
       res.send("error in addContact")
     }
   });
+  
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
+
+
 
 app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
