@@ -8,7 +8,7 @@ const express = require("express"),
 
 const mongoose = require("mongoose");
 mongoose.connect(
-  'mongodb://localhost/Brandeis-Timetable',
+  'mongodb://localhost/timetable',
   {useNewUrlParser:true})
 
 const db = mongoose.connection;
@@ -38,7 +38,7 @@ app.get("/andrew", homeController.showAndrew);
 app.get("/julian",homeController.showJulian);
 app.get("/test_prof_profile",homeController.showTestProf);
 app.get("/test_class_schedule",homeController.showTestSchedule);
-app.post("/contact", homeController.postedSignUpForm);
+//app.post("/contact", homeController.postedSignUpForm);
 
 const Contact=require("./models/Contact")
 app.get("/showContacts",
@@ -54,8 +54,8 @@ app.get("/showContacts",
    }
  })
 
-app.post('Contact',
-  async(req,res) => {
+app.post('/contact',
+  async(req,res,next) => {
     try {
       let name = req.body.name
       let email = req.body.email
@@ -65,10 +65,10 @@ app.post('Contact',
       res.redirect('/showContacts')
     }
     catch(e) {
-      res.send("error in addContact")
+      next(e)
     }
   });
-  
+
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
 
