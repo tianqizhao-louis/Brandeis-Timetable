@@ -9,7 +9,7 @@ const express = require("express"),
 const mongoose = require("mongoose");
 mongoose.connect(
   'mongodb://localhost/timetable',
-  {useNewUrlParser:true})
+  {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true})
 
 const db = mongoose.connection;
 db.on('error', ()=>console.log("connection error"))
