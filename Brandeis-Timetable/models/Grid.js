@@ -3,11 +3,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const gridSchema = Schema( {
-  Department: String,
-  Professor: String,
-  CourseID: String,
-  TAs: String,
-  BUGS: String
+  department: String,
+  professor: String,
+  courseID: String,
+  tas: [{name: String, hours:String}],
+  bugs: String
 });
 
 module.exports = mongoose.model('Grid', gridSchema);
