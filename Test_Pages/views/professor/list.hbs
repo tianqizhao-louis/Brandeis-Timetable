@@ -17,10 +17,10 @@
             <td>{{this.email}}</td>
             <td>{{this.course}}</td>
             <td>{{this.prof_id}}</td>
-            <td>{{this.schedule}}</td>
+            <td style="overflow: hidden;max-width: 20ch;">{{this.schedule}}</td>
             <td>
                 <a href="/professor/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
-                <a href="/professor/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this professor's record?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+                <a href="/professor/delete/{{this._id}}" onclick="return confirm('Are you sure to delete the record of this professor ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
             </td>
         </tr>
         {{/each}}
