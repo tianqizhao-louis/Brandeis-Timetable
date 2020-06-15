@@ -50,19 +50,44 @@ function insertRecord(req, res) {
                     prof: req.body
                 });
             }
-            else
+            else{
+              if(err.name == 'ValidationError'){
+                handleValidationError(err, req.body);
+                res.render("professor/addOrEdit", {
+                    viewTitle: "Insert Professor",
+                    prof: req.body
+                });
+              }else{
                 console.log('Error during record insertion : ' + err);
+              }
+            }
         }
     });
 }
 
 
+
+router.get('/list', (req, res) => {
+    professor.find((err, docs) =>{
+       if(!err){
+         res.render("professor/list", {
+           list: docs
+         });
+       }else{
+         console.log('Error in retrieving employee list:' + err);
+       }
+    });
+});
+
+
+
+
 // handle validation error
 function handleValidationError(err, body) {
-    for (field in err.errors) {
+    for (const field in err.errors) {
         switch (err.errors[field].path) {
             case 'name':
-                body['NameError'] = err.errors[field].message;
+                body['nameError'] = err.errors[field].message;
                 break;
             case 'email':
                 body['emailError'] = err.errors[field].message;
@@ -72,6 +97,55 @@ function handleValidationError(err, body) {
         }
     }
 }
+
+
+function updateRecord(req, res){
+  professor.findOneAndUpdate({_id: req.body._id}, req.body, {new : true}, (err, doc) =>{
+    if(!err){
+      res.redirect('professor/list');
+    }else{
+      if (err.name == 'ValidationError'){
+        handleValidationError(err,req.body);
+        res.render("professor/addOrEdit", {
+          viewTitle: 'Update Professor',
+          professor: req.body
+        });
+      }else{
+        console.log('Error during record update: ' + err);
+      }
+    }
+  })
+}
+
+
+
+
+router.get('/:id', (req, res) => {
+  professor.findById(req.params.id, (err, doc) =>{
+    if(!err){
+      res.render("professor/addOrEdit", {
+        viewTitle:"Update Professor",
+        prof: doc
+      });
+
+    }
+  });
+});
+
+
+router.get('/delete/:id', (req, res) => {
+  professor.findByIdAndRemove(req.params.id, (err, doc) => {
+    if(!err){
+      res.redirect('/professor/list');
+    }else{
+      console.log('Error in professor delete: ' + err);
+    }
+  });
+});
+
+
+
+
 
 
 module.exports = router;

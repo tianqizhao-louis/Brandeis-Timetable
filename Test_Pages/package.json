@@ -18,5 +18,8 @@
     "http-status-codes": "^1.4.0",
     "mongoose": "^5.9.18",
     "nodes": "^0.1.0"
+  },
+  "devDependencies": {
+    "handlebars": "^4.5.0"
   }
 }
