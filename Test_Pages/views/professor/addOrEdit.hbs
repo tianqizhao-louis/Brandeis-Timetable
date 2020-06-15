@@ -1,0 +1,33 @@
+<h3>{{viewTitle}}</h3>
+
+<form action="/professor" method="POST" autocomplete="off">
+    <input type="hidden" name="_id" value="{{prof._id}}">
+    <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Name" value="{{prof.name}}">
+        <div class="text-danger">
+            {{employee.fullNameError}}</div>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" name="email" placeholder="Email" value="{{prof.email}}">
+        <div class="text-danger">
+            {{employee.emailError}}</div>
+    </div>
+    <div class="form-group">
+            <label>Course</label>
+            <input type="text" class="form-control" name="course" placeholder="Course" value="{{prof.course}}">
+    </div>
+    <div class="form-group">
+            <label>Professor ID</label>
+            <input type="text" class="form-control" name="prof_id" placeholder="Professor ID" value="{{prof.prof_id}}">
+    </div>
+    <div class="form-group">
+            <label>Schedule</label>
+            <input type="text" class="form-control" name="schedule" placeholder="Schedule" value="{{prof.schedule}}">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info"><i class="fa fa-database"></i> Submit</button>
+        <a class="btn btn-secondary" href="/professor/list"><i class="fa fa-list-alt"></i> View All</a>
+    </div>
+</form>

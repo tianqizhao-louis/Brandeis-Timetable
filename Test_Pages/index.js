@@ -13,6 +13,9 @@ var app = express();
 const path = require('path');
 const exphbs = require('express-handlebars');
 
+// body parser request
+const bodyparser = require('body-parser');
+
 
 // controller config
 const professorController = require('./controllers/professorController');
@@ -23,6 +26,15 @@ app.set('views', path.join(__dirname, '/views/'));
 app.engine('hbs', exphbs({extname: 'hbs', defaultLayout: 'mainLayout',
 layoutsDir: __dirname + '/views/layouts/'}));
 app.set('view engine', 'hbs');
+
+
+// use body parser
+app.use(bodyparser.urlencoded({
+  extended:true
+}));
+// to json
+app.use(bodyparser.json());
+
 
 
 //running
