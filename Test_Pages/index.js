@@ -8,3 +8,16 @@ mongoose.connect(
   {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true}
   // Above is used to avoid errors
 );
+
+// inital express
+const express = require("express"),
+  app = express(),
+  professorController = require("./controllers/professorController"),
+  layouts = require("express-ejs-layouts");
+
+
+app.get("/professor_schema", professorController.getAllProfessors,
+ (req, res, next) => {
+  console.log(req.data);
+  res.send(req.data);
+});
