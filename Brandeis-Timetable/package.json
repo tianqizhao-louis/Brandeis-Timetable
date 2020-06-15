@@ -4,16 +4,22 @@
   "description": "A site for booking classes for cooking.",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www"
   },
   "author": "Julian Berlin",
   "license": "ISC",
   "dependencies": {
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^3.2.0",
     "ejs": "^2.6.1",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.1",
     "http-status-codes": "^1.4.0",
-    "mongoose": "^5.9.18"
+    "mongoose": "^5.9.18",
+    "passport": "^0.4.1",
+    "passport-google-oauth": "^2.0.0"
   },
   "devDependencies": {}
 }

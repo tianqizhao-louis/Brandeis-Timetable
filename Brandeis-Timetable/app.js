@@ -11,12 +11,14 @@ mongoose.connect(
   'mongodb://localhost/timetable',
   {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true})
 
+const authRouter = require("./routes/authentication")
+app.use(authRouter)
+
 const db = mongoose.connection;
 db.on('error', ()=>console.log("connection error"))
 db.once('open', ()=>console.log("We connected at " +new Date()))
 
 app.set("view engine", "ejs");
-app.set("port", process.env.PORT || 3000);
 app.use(
   express.urlencoded({
     extended: false
@@ -77,3 +79,5 @@ app.use(errorController.internalServerError);
 app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
 });
+
+module.exports=app
