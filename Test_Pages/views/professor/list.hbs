@@ -1,0 +1,28 @@
+<h3><a class="btn btn-secondary" href="/professor"><i class="fa fa-plus"></i> Create New</a> Professor List</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Course</th>
+            <th>ProfessorID</th>
+            <th>Schedule</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.course}}</td>
+            <td>{{this.prof_id}}</td>
+            <td style="overflow: hidden;max-width: 20ch;">{{this.schedule}}</td>
+            <td>
+                <a href="/professor/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/professor/delete/{{this._id}}" onclick="return confirm('Are you sure to delete the record of this professor ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

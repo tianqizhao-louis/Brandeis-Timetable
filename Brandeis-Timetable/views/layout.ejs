@@ -31,6 +31,16 @@
 			<a href="/contact">
 				<span class="button">Contact</span>
 			</a>
+			<% if (!loggedIn) {%>
+			<a href="/auth/google">
+				<span	class="button">Login</span>
+			</a>
+			<% } else { %>
+				<%=user.googleemail %>
+			<a href="/logout">
+				<span class="button">Logout</span>
+			</a>
+			<% } %>
 		</div>
 	</div>
 
