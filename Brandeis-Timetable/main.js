@@ -40,7 +40,7 @@ app.get("/test_prof_profile",homeController.showTestProf);
 app.get("/test_class_schedule",homeController.showTestSchedule);
 //app.post("/contact", homeController.postedSignUpForm);
 
-const Contact=require("./models/Contact")
+const Contact=require("./models/Contact");
 app.get("/showContacts",
  async(req,res) => {
    try{
@@ -52,7 +52,7 @@ app.get("/showContacts",
      console.dir(theError)
      res.send("There was an error in /showContacts!")
    }
- })
+ });
 
 app.post('/contact',
   async(req,res,next) => {
@@ -68,6 +68,21 @@ app.post('/contact',
       next(e)
     }
   });
+
+  const Grid=require("./models/Grid");
+  app.get("/testShowGrid",
+  async(req,res) => {
+   try{
+     res.locals.grid_db = await Grid.find({})
+     res.render('testShowGrid')
+   }
+   catch(e) {
+     console.log("Error:"+e);
+     console.dir(theError);
+     res.send("There was an error in /testShowGrid!");
+   }
+ });
+
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
