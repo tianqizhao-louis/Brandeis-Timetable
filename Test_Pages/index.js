@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 
 // connect with mongodb
@@ -8,6 +8,13 @@ require('./models/db');
 // connect with express
 const express = require('express');
 var app = express();
+
+
+// require mongoose
+const mongoose = require('mongoose');
+var professor = mongoose.model('professor_Sch');
+
+
 
 // request path & express handle bars
 const path = require('path');
@@ -48,7 +55,21 @@ app.listen(3000, () => {
 app.use('/professor', professorController);
 
 
+app.get("/", (req, res) => {
+  professor.find((err, docs) =>{
+    if(!err){
+      res.render("app", {
+        list: docs
+      });
+    }else{
+      console.log('Error in retrieving professor list:' + err);
+    }
+  });
+});
 
+app.get("/bio", (req, res) => {
+  res.render("bio");
+})
 
 
 
