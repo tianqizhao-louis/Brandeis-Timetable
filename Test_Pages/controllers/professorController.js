@@ -25,8 +25,6 @@ router.post('/professor', (req, res) => {
 });
 
 
-
-
 // insert a new record into the database
 function insertRecord(req, res) {
     var prof = new professor();
