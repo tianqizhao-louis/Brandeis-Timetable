@@ -15,6 +15,10 @@ const mongoose = require('mongoose');
 var professor = mongoose.model('professor_Sch');
 
 
+// require passport
+const passport = require('passport');
+
+
 
 // request path & express handle bars
 const path = require('path');
@@ -69,9 +73,43 @@ app.get("/", (req, res) => {
 
 app.get("/bio", (req, res) => {
   res.render("bio");
-})
+});
+
+app.get('/professor', (req, res) =>{
+  res.render("professor/addOrEdit", {
+    viewTitle: "Insert Professor"
+  });
+});
+
+/*
+// Google auth config
+app.use(passport.initialize());
+app.use(passport.session());
 
 
+app.get('/google',
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+app.get('/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }), //failed
+    function(req, res) {
+      // Successful authentication, redirect home.
+      res.redirect('/good');    // change TODO
+    });
+
+
+// config cookie session
+require('./config/passport-config');
+const cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'Timetable-session',
+  keys: ['key1', 'key2']
+}))
+
+app.get('/login', (req, res) => res.send('You Failed to log in!'));
+app.get('/good', (req, res) => res.send('Welcome $[req.user.email]!'));
+
+*/
 
 /*
 
