@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 // introduce express, router, mongoose, professor schema
 const express = require('express');
@@ -8,7 +8,7 @@ var professor = mongoose.model('professor_Sch');
 
 
 // get the page
-router.get('/', (req, res) => {
+router.get('/professor', (req, res) => {
     res.render("professor/addOrEdit", {
         viewTitle: "Insert Professor"
     });
@@ -17,12 +17,14 @@ router.get('/', (req, res) => {
 
 
 // post info
-router.post('/', (req, res) => {
+router.post('/professor', (req, res) => {
     if (req.body._id == '')
         insertRecord(req, res);
         else
         updateRecord(req, res);
 });
+
+
 
 
 // insert a new record into the database
@@ -74,11 +76,10 @@ router.get('/list', (req, res) => {
            list: docs
          });
        }else{
-         console.log('Error in retrieving employee list:' + err);
+         console.log('Error in retrieving professor list:' + err);
        }
     });
 });
-
 
 
 
@@ -142,9 +143,6 @@ router.get('/delete/:id', (req, res) => {
     }
   });
 });
-
-
-
 
 
 

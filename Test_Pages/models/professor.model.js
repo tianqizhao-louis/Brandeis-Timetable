@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 // connect with mongodb
 const mongoose = require('mongoose');
