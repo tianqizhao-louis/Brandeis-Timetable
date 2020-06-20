@@ -2,49 +2,29 @@
   <div style="text-align: center;display: table-cell;vertical-align: middle;">
       <img src="images/logo.png" alt="">
   </div>
-  <div class="col-sm-12" style="text-align: center;display: table-cell;vertical-align: middle;"">
-    <h1>Welcome!</h1>
-    <p>You wanna schedule with course TAs, Bug Tutors, or professors?</p>
-    <p>Come on and search here!</p>
-    <input type = "text" name = "search" value = "">
-    <p> Tags: </p>
-    <button>Search by Professor</button>
-    <button>Search by Bug Tutors</button>
-    <button>Search by Courses</button>
-    <button>Search by TA Names</button>
-  </div>
 
   <div class="grid_container">
     <div class="grid_header" style="grid-column: first/second;">Department</div>
     <div class="grid_header" style="grid-column: second/third;">Professor</div>
     <div class="grid_header" style="grid-column:third/fourth;">Course ID</div>
-    <div class="grid_header" style="grid-column:fourth/fifth;">TAs</div>
-    <div class="grid_header" style="grid-column:fifth/last;">BUGS</div>
-
-    <div class="grid_content">Anthropology</div>
-    <div class="grid_content">Professor XYZ</div>
-    <div class="grid_content">Anth2</div>
-    <div class="grid_content">John, Cindy, Mac</div>
-    <div class="grid_content">Chris</div>
-
-    <div class="grid_content">Anthropology</div>
-    <div class="grid_content">Professor ABC</div>
-    <div class="grid_content">Anth55</div>
-    <div class="grid_content">Q, W, E, R, T, Y, U</div>
-    <div class="grid_content">Geo, Dude, Person, Yike</div>
 
 
     <div class="grid_content">Computer Sciece</div>
     <div class="grid_content"><a href="/test_prof_profile">Antonella Dillilo</a></div>
     <div class="grid_content"><a href="/test_class_schedule">Data Structures</a></div>
-    <div class="grid_content">Julian</div>
-    <div class="grid_content"></div>
+    
 
     <div class="grid_content">Computer Sciece</div>
     <div class="grid_content">Hickey <div class="hover_test"><p>hours: Mon-Thur: 3-5</p> </div></div>
     <div class="grid_content">Web Development</div>
-    <div class="grid_content">John, Mike</div>
-    <div class="grid_content">Xavier, Smith</div>
+
+
+  
+    <% grid_db.forEach(element => {%>
+      <div class="grid_content"><%= element.department %></div>
+      <div class="grid_content"><%= element.prof_name %></div>
+      <div class="grid_content"><%= element.courseid %></div>
+    <% }) %>
     
   </div>
 
