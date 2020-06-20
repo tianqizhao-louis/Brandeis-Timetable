@@ -4,7 +4,6 @@
 // connect with mongodb
 require('./models/db');
 
-
 // connect with express
 const express = require('express');
 var app = express();
@@ -29,6 +28,7 @@ const bodyparser = require('body-parser');
 
 
 // controller config
+var professor = mongoose.model('professor_Sch');
 const professorController = require('./controllers/professorController');
 
 

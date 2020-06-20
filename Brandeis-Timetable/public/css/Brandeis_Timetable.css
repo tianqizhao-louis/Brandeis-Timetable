@@ -15,12 +15,13 @@ body {
   box-shadow: 10px 10px 10px #ccc;
   position: absolute;
   top: 0;
+  background: rgb(0, 46, 108);
 }
 
 #title {
-  color: #2B22AA;
+  color: rgb(255, 253, 253);
   margin: 0;
-  font-family: "Courier New";
+  font-family: "Chronicle Display";
   text-transform: uppercase;
 }
 
@@ -38,7 +39,6 @@ a {
 }
 
 .nav-align {
-  text-align: center;
   padding: 3px 0;
 }
 
@@ -52,7 +52,7 @@ a {
   border-radius: 2px;
   cursor: pointer;
   display: inline-block;
-  color: #fff;
+  color:rgb(255, 253, 253);
 }
 
 .button:hover {
