@@ -4,10 +4,10 @@
 // connect with mongodb
 require('./models/db');
 
+
 // connect with express
 const express = require('express');
 var app = express();
-var router = express.Router();
 
 
 // require mongoose
@@ -29,9 +29,14 @@ const bodyparser = require('body-parser');
 
 
 // controller config
-var professor = mongoose.model('professor_Sch');
 const professorController = require('./controllers/professorController');
 
+const authRouter = require("./routes/authentication")
+app.use(authRouter)
+
+const db = mongoose.connection;
+db.on('error', ()=>console.log("connection error"))
+db.once('open', ()=>console.log("We connected at " +new Date()))
 
 // config handlebars
 app.set('views', path.join(__dirname, '/views/'));
@@ -82,29 +87,9 @@ app.get('/professor', (req, res) =>{
   });
 });
 
-
-app.get('/julian', (req, res) => {
-  res.render("julian");
-    }
-);
-
-app.get('/andrew', (req, res) => {
-      res.render("andrew");
-    }
-);
-
-
-//var professor = mongoose.model('professor_Sch');
-const updateController = require('./controllers/updateController');
-app.post('/professor', function(req, res){
-  if (req.body._id == '')
-    updateController.insertRecord(req, res);
-  else
-    updateController.updateRecord(req, res);
+app.get("/login", (req, res) => {
+  res.render("login");
 });
-
-
-
 
 /*
 // Google auth config
