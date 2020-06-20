@@ -8,11 +8,11 @@ require('./models/db');
 // connect with express
 const express = require('express');
 var app = express();
+var router = express.Router();
 
 
 // require mongoose
 const mongoose = require('mongoose');
-var professor = mongoose.model('professor_Sch');
 
 
 // require passport
@@ -81,10 +81,29 @@ app.get('/professor', (req, res) =>{
   });
 });
 
-app.set('view engine', 'ejs');
-app.get("/julian", (req, res) => {
+
+app.get('/julian', (req, res) => {
   res.render("julian");
+    }
+);
+
+app.get('/andrew', (req, res) => {
+      res.render("andrew");
+    }
+);
+
+
+//var professor = mongoose.model('professor_Sch');
+const updateController = require('./controllers/updateController');
+app.post('/professor', function(req, res){
+  if (req.body._id == '')
+    updateController.insertRecord(req, res);
+  else
+    updateController.updateRecord(req, res);
 });
+
+
+
 
 /*
 // Google auth config
