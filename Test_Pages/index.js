@@ -13,6 +13,7 @@ var router = express.Router();
 
 // require mongoose
 const mongoose = require('mongoose');
+var professor = mongoose.model('professor_Sch');
 
 
 // require passport
