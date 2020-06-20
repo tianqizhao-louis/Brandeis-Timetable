@@ -56,9 +56,6 @@ exports.showSignUp = (req, res) => {
     date: new Date(),
   });
 };
-exports.showgridEditor = (req, res) => {
-  res.render("gridEditor");
-};
 
 exports.postedSignUpForm = (req, res) => {
   let formData = req.body

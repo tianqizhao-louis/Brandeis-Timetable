@@ -5,8 +5,8 @@
     <div class="col-sm-6">
       <h1>TestGridJSON</h1>
         <ul>
-        <% grid_db.forEach(x => {%>
-          <li> Professor: <%= x.prof_name %>, Department: <%= x.department %>, Course ID: <%= x.courseid %>, Office Hours: <%= x.prof_hours %>, Office Location: <%= x.prof_office %></li>
+        <% grid_db.forEach(grid => {%>
+          <li> <%= grid.a %>:  <%= grid.b %> </li>
         <% }) %>
         </ul>
     </div>
