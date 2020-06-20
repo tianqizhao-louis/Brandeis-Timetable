@@ -81,6 +81,11 @@ app.get('/professor', (req, res) =>{
   });
 });
 
+app.set('view engine', 'ejs');
+app.get("/julian", (req, res) => {
+  res.render("julian");
+});
+
 /*
 // Google auth config
 app.use(passport.initialize());

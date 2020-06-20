@@ -28,13 +28,11 @@ app.use(express.json());
 app.use(layouts);
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
 
 app.get("/about",homeController.showAbout);
 app.get("/courses", homeController.showCourses);
 app.get("/contact", homeController.showSignUp);
+app.get("/gridEditor", homeController.showgridEditor);
 app.get("/bio", homeController.showBio);
 app.get("/andrew", homeController.showAndrew);
 app.get("/julian",homeController.showJulian);
@@ -72,6 +70,18 @@ app.post('/contact',
   });
 
   const Grid=require("./models/Grid");
+  app.get("/", 
+  async(req, res) => {
+    try{
+      res.locals.grid_db = await Grid.find({})
+      res.render('index')
+    }
+    catch(e) {
+      console.log("Error:"+e);
+      console.dir(theError);
+      res.send("There was an error in /index!");
+    }
+  });
   app.get("/testShowGrid",
   async(req,res) => {
    try{
@@ -84,6 +94,24 @@ app.post('/contact',
      res.send("There was an error in /testShowGrid!");
    }
  });
+
+ app.post('/gridEditor',
+  async(req,res,next) => {
+    try {
+      let prof_name = req.body.prof_name
+      let department = req.body.department
+      let courseid = req.body.courseid
+      let prof_hours = req.body.prof_hours
+      let prof_office = req.body.prof_office
+      let newGrid = new Grid({prof_name:prof_name, department:department, courseid:courseid, prof_hours:prof_hours, prof_office:prof_office})
+      //add let tas = req.body.tas, let bugs = req.body.bugs, tas:tas, bugs:bugs
+      await newGrid.save()
+      res.redirect('/testShowGrid')
+    }
+    catch(e) {
+      next(e)
+    }
+  });
 
 
 app.use(errorController.pageNotFoundError);
