@@ -3,6 +3,24 @@
       <img src="images/logo.png" alt="">
   </div>
 
+  <% if (loggedIn) {%>
+      <a href="/gridEditor"><div class="button">Edit Grid Data</div></a>
+  <% } %>
+
+  <div style="text-align: center;">
+    Sort Grid By:
+    <div>
+      <span class="control_button" id="Department_ASC">Department ASC</span>
+      <span class="control_button" id="Department_DESC">Department DESC</span>
+      <span class="control_button" id="Professor_ASC">Professor ASC</span>
+      <span class="control_button" id="Professor_DESC">Professor DESC</span>
+      <span class="control_button" id="Course_ID_ASC">Course ID ASC</span>
+      <span class="control_button"id="Course_ID_DESC">Course ID DESC</span>
+    </div>
+  </div>
+
+  <br>
+
   <div class="grid_container">
     <div class="grid_header" style="grid-column: first/second;">Department</div>
     <div class="grid_header" style="grid-column: second/third;">Professor</div>
@@ -12,20 +30,46 @@
     <div class="grid_content">Computer Sciece</div>
     <div class="grid_content"><a href="/test_prof_profile">Antonella Dillilo</a></div>
     <div class="grid_content"><a href="/test_class_schedule">Data Structures</a></div>
-    
-
-    <div class="grid_content">Computer Sciece</div>
-    <div class="grid_content">Hickey <div class="hover_test"><p>hours: Mon-Thur: 3-5</p> </div></div>
-    <div class="grid_content">Web Development</div>
-
 
   
     <% grid_db.forEach(element => {%>
       <div class="grid_content"><%= element.department %></div>
-      <div class="grid_content"><%= element.prof_name %></div>
+      <div class="grid_content"><%= element.prof_name %><div class="grid_content_hidden">Office: <%= element.prof_office %>, Hours: <%= element.prof_hours %></div></div>
       <div class="grid_content"><%= element.courseid %></div>
-    <% }) %>
-    
+    <% }) %> 
   </div>
+  <script>
+    const Grid=require("./models/Grid");
+    $("#Department_ASC").click(function(){
+      async(req, res) => {
+        try{
+          res.locals.grid_db = await Grid.find().sort({department:1});
+          res.render('index')
+          res.redirect('/')
+        }
+        catch(e) {
+         console.log("Error:"+e);
+          console.dir(theError);
+         res.send("There was an error in the Department ASC buttion");
+        }
+      }
+    });
+    $('#Department_DESC').click(function(){
+      alert("Test");
+      async(req, res) => {
+        try{
+          res.locals.grid_db = await Grid.find().sort({department:-1});
+          res.render('index')
+          res.redirect('/')
+        }
+        catch(e) {
+         console.log("Error:"+e);
+          console.dir(theError);
+         res.send("There was an error in the Department DESC buttion");
+        }
+      }
+    });
+    
+  </script>
 
 </div>

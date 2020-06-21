@@ -73,7 +73,7 @@ app.post('/contact',
   app.get("/", 
   async(req, res) => {
     try{
-      res.locals.grid_db = await Grid.find({})
+      res.locals.grid_db = await Grid.find().sort({department:1});
       res.render('index')
     }
     catch(e) {
