@@ -88,5 +88,5 @@ exports.showProfile = (req, res) => {
 }
 
 exports.showSchedule = (req, res) =>{
-  res.render("professor_profile_schedule");
+  res.render("pro");
 }

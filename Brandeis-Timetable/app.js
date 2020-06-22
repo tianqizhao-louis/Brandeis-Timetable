@@ -141,6 +141,11 @@ app.use('/professor_profile_schedule/:userId',
 
  */
 
+app.get("/pro", homeController.showSchedule);
+
+
+
+/*
 require("./models/Grid");
 var professor = mongoose.model('Grid');
 //ar professor = mongoose.model('Grid');
@@ -155,6 +160,8 @@ app.get('/professor_profile_schedule/:userId', (req, res) =>
 )
 
 //app.get('/professor_profile_schedule', homeController.showSchedule);
+
+ */
 
 
 /*
