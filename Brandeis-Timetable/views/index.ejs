@@ -3,7 +3,7 @@
       <img src="images/logo.png" alt="">
   </div>
 
-  <% if (loggedIn) {%>
+  <% if (isAdmin) {%>
       Developer Tools:
       <a href="/gridEditor"><div class="button">Edit Grid Data</div></a>
   <% } %>
@@ -32,12 +32,12 @@
     <div class="grid_content"><a href="/test_prof_profile">Antonella Dillilo</a></div>
     <div class="grid_content"><a href="/test_class_schedule">Data Structures</a></div>
 
-  
+
     <% grid_db.forEach(element => {%>
       <div class="grid_content"><%= element.department %></div>
       <div class="grid_content"><%= element.prof_name %><div class="grid_content_hidden">Office: <%= element.prof_office %>, Hours: <%= element.prof_hours %></div></div>
       <div class="grid_content"><%= element.courseid %></div>
-    <% }) %> 
+    <% }) %>
   </div>
   <script>
     const Grid=require("./models/Grid");
@@ -70,7 +70,7 @@
         }
       }
     });
-    
+
   </script>
 
 </div>

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Admin = require("../models/Admin");
 
 /*
 this is a router to handle authentication
@@ -36,9 +37,20 @@ const approvedLogins = ["tjhickey@brandeis.edu", "tjhickey724@gmail.com","csjbs2
 router.use((req,res,next) => {
   res.locals.title="Authentication Demo"
   res.locals.loggedIn = false
+  res.locals.isAdmin = false
   if (req.isAuthenticated()){
       res.locals.user = req.user
       res.locals.loggedIn = true
+      Admin.findOne({googleemail:req.user.googleemail})
+        .exec()
+        .then(admin => {
+          if (admin) {
+            res.locals.isAdmin = true
+          }
+        })
+        .catch(e => {
+          next(e)
+        })
     }
   else {
     res.locals.loggedIn = false
