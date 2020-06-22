@@ -86,3 +86,7 @@ exports.showTestSchedule = (req,res) => {
 exports.showProfile = (req, res) => {
   res.render("profile");
 }
+
+exports.showSchedule = (req, res) =>{
+  res.render("professor_profile_schedule");
+}

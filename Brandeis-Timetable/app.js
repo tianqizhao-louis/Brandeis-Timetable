@@ -141,20 +141,20 @@ app.use('/professor_profile_schedule/:userId',
 
  */
 
+require("./models/Grid");
+var professor = mongoose.model('Grid');
 //ar professor = mongoose.model('Grid');
-app.use('/professor_profile_schedule/:userId',
-    async (req,res,next) => {
-        try {
-            let userId = req.params.userId
-            res.locals.profile = await Grid.findOne({_id:userId})
-            res.render('professor_profile_schedule')
+app.get('/professor_profile_schedule/:userId', (req, res) =>
+    professor.findById(req.params.id, (err, doc) =>{
+        if(!err){
+            res.render("professor_profile_schedule", {
+            });
+
         }
-        catch(e){
-            console.log("Error in /profile/userId:")
-            next(e)
-        }
-    }
+    })
 )
+
+//app.get('/professor_profile_schedule', homeController.showSchedule);
 
 
 /*
