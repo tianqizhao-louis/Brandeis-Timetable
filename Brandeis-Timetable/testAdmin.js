@@ -19,6 +19,9 @@ let admins = [
   },
   {
     googleemail: "julianb@brandeis.edu"
+  },
+  {
+    googleemail: "louiszhao0517@gmail.com"
   }
 ];
 
