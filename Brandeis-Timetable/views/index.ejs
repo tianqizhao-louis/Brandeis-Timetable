@@ -2,8 +2,9 @@
   <div style="text-align: center;display: table-cell;vertical-align: middle;">
       <img src="images/logo.png" alt="">
   </div>
+  
 
-  <% if (loggedIn) {%>
+  <% if (isAdmin) {%>
       Developer Tools:
       <a href="/gridEditor"><div class="button">Edit Grid Data</div></a>
   <% } %>
@@ -22,21 +23,43 @@
 
   <br>
 
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Department</th>
+      <th>Professor</th>
+      <th>CourseID</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% grid_db.forEach(element => {%>
+      <tr>
+        <td><%= element.department %></td>
+        <td><%= element.prof_name %></td>
+        <td><%= element.courseid %></td>
+        <td><a href="/pro">Schedule with them</a></td>
+      </tr>
+    <% }) %>
+    </tbody>
+  </table>
+
+  <!--
+
   <div class="grid_container">
     <div class="grid_header" style="grid-column: first/second;">Department</div>
     <div class="grid_header" style="grid-column: second/third;">Professor</div>
     <div class="grid_header" style="grid-column:third/fourth;">Course ID</div>
+    <div class = "grid_header" style="grid-column:fourth/fifth;">Action</div>
 
 
     <div class="grid_content">Computer Sciece</div>
     <div class="grid_content"><a href="/test_prof_profile">Antonella Dillilo</a></div>
     <div class="grid_content"><a href="/test_class_schedule">Data Structures</a></div>
+  -->
 
-  
-    <% grid_db.forEach(element => {%>
-      <div class="grid_content"><%= element.department %></div>
-      <div class="grid_content"><%= element.prof_name %><div class="grid_content_hidden">Office: <%= element.prof_office %>, Hours: <%= element.prof_hours %></div></div>
-      <div class="grid_content"><%= element.courseid %></div>
-    <% }) %> 
+
+
+
   </div>
 </div>

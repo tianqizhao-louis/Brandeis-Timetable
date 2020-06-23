@@ -1,23 +1,28 @@
 "use strict";
 
+// connect express, controllers, ejs
 const express = require("express"),
   app = express(),
   homeController = require("./controllers/homeController"),
   errorController = require("./controllers/errorController"),
   layouts = require("express-ejs-layouts");
 
+// connect with mongoose
 const mongoose = require("mongoose");
 mongoose.connect(
   'mongodb://localhost/timetable',
   {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true})
 
+// connect with authentication
 const authRouter = require("./routes/authentication")
 app.use(authRouter)
 
+// check mongoDB
 const db = mongoose.connection;
 db.on('error', ()=>console.log("connection error"))
 db.once('open', ()=>console.log("We connected at " +new Date()))
 
+// enable ejs
 app.set("view engine", "ejs");
 app.use(
   express.urlencoded({
@@ -29,6 +34,7 @@ app.use(layouts);
 app.use(express.static("public"));
 
 
+// render every pages
 app.get("/about",homeController.showAbout);
 app.get("/courses", homeController.showCourses);
 app.get("/contact", homeController.showSignUp);
@@ -38,6 +44,7 @@ app.get("/andrew", homeController.showAndrew);
 app.get("/julian",homeController.showJulian);
 app.get("/test_prof_profile",homeController.showTestProf);
 app.get("/test_class_schedule",homeController.showTestSchedule);
+app.get("/profile", homeController.showProfile);
 //app.post("/contact", homeController.postedSignUpForm);
 
 const Contact=require("./models/Contact");
@@ -145,6 +152,61 @@ app.post('/contact',
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
+
+/*
+app.use('/professor_profile_schedule/:userId',
+    async(req, res, next) => {
+        try{
+            let userId = req.params.userId
+            res.locals.profile = await Grid.findOne({_id:userId})
+            res.render('professor_profile_schedule')
+        }
+        catch(e){
+            console.log('Error in /profile/userId:')
+            next(e)
+        }
+    }
+)
+
+ */
+
+app.get("/pro", homeController.showSchedule);
+
+
+
+/*
+require("./models/Grid");
+var professor = mongoose.model('Grid');
+//ar professor = mongoose.model('Grid');
+app.get('/professor_profile_schedule/:userId', (req, res) =>
+    professor.findById(req.params.id, (err, doc) =>{
+        if(!err){
+            res.render("professor_profile_schedule", {
+            });
+
+        }
+    })
+)
+
+//app.get('/professor_profile_schedule', homeController.showSchedule);
+
+ */
+
+
+/*
+router.get('/:id', (req, res) => {
+  professor.findById(req.params.id, (err, doc) =>{
+    if(!err){
+      res.render("professor/addOrEdit", {
+        viewTitle:"Update Professor",
+        prof: doc
+      });
+
+    }
+  });
+});
+
+ */
 
 
 app.listen(app.get("port"), () => {
