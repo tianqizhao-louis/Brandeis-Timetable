@@ -45,6 +45,7 @@ app.get("/julian",homeController.showJulian);
 app.get("/test_prof_profile",homeController.showTestProf);
 app.get("/test_class_schedule",homeController.showTestSchedule);
 app.get("/profile", homeController.showProfile);
+app.get("/pro", homeController.showSchedule);
 //app.post("/contact", homeController.postedSignUpForm);
 
 const Contact=require("./models/Contact");
@@ -98,7 +99,7 @@ app.post('/contact',
       let sortmethod = {};
       sortmethod[f]=d;
       res.locals.grid_db = await Grid.find().sort(sortmethod);
-      res.render('/')
+      res.render('index')
     }
     catch(e) {
       console.log("Error:"+e);
@@ -169,8 +170,6 @@ app.use('/professor_profile_schedule/:userId',
 )
 
  */
-
-app.get("/pro", homeController.showSchedule);
 
 
 
