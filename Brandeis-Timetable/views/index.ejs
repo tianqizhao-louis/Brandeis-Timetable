@@ -12,12 +12,12 @@
   <div style="text-align: center;">
     Sort Grid By:
     <div>
-      <span class="control_button" id="Department_ASC">Department ASC</span>
-      <span class="control_button" id="Department_DESC">Department DESC</span>
-      <span class="control_button" id="Professor_ASC">Professor ASC</span>
-      <span class="control_button" id="Professor_DESC">Professor DESC</span>
-      <span class="control_button" id="Course_ID_ASC">Course ID ASC</span>
-      <span class="control_button"id="Course_ID_DESC">Course ID DESC</span>
+      <span class="control_button" id="Department_ASC"><a href="/sort/department/1">Department ASC</a></span>
+      <span class="control_button" id="Department_DESC"><a href="/sort/department/-1">Department DESC</a></span>
+      <span class="control_button" id="Professor_ASC"><a href="/sort/prof_name/1">Professor ASC</a></span>
+      <span class="control_button" id="Professor_DESC"><a href="/sort/prof_name/-1">Professor DESC</a></span>
+      <span class="control_button" id="Course_ID_ASC"><a href="/sort/courseid/1">Course ID ASC</a></span>
+      <span class="control_button" id="Course_ID_DESC"><a href="/sort/courseid/-1">Course ID DESC</a></span>
     </div>
   </div>
 
@@ -62,38 +62,4 @@
 
 
   </div>
-  <script>
-    const Grid=require("./models/Grid");
-    $("#Department_ASC").click(function(){
-      async(req, res) => {
-        try{
-          res.locals.grid_db = await Grid.find().sort({department:1});
-          res.render('index')
-          res.redirect('/')
-        }
-        catch(e) {
-         console.log("Error:"+e);
-          console.dir(theError);
-         res.send("There was an error in the Department ASC buttion");
-        }
-      }
-    });
-    $('#Department_DESC').click(function(){
-      alert("Test");
-      async(req, res) => {
-        try{
-          res.locals.grid_db = await Grid.find().sort({department:-1});
-          res.render('index')
-          res.redirect('/')
-        }
-        catch(e) {
-         console.log("Error:"+e);
-          console.dir(theError);
-         res.send("There was an error in the Department DESC buttion");
-        }
-      }
-    });
-
-  </script>
-
 </div>

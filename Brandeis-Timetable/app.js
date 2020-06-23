@@ -89,6 +89,23 @@ app.post('/contact',
       res.send("There was an error in /index!");
     }
   });
+
+  app.get("/sort/:field/:dir", 
+  async(req, res) => {
+    try{
+      let f = req.params.field
+      let d = req.params.dir
+      let sortmethod = {};
+      sortmethod[f]=d;
+      res.locals.grid_db = await Grid.find().sort(sortmethod);
+      res.render('/')
+    }
+    catch(e) {
+      console.log("Error:"+e);
+      console.dir(theError);
+      res.send("There was an error in /index!");
+    }
+  });
   app.get("/testShowGrid",
   async(req,res) => {
    try{
@@ -102,7 +119,7 @@ app.post('/contact',
    }
  });
 
- app.post('/gridEditor',
+ app.post('/gridEditor_addition',
   async(req,res,next) => {
     try {
       let prof_name = req.body.prof_name
@@ -113,7 +130,19 @@ app.post('/contact',
       let newGrid = new Grid({prof_name:prof_name, department:department, courseid:courseid, prof_hours:prof_hours, prof_office:prof_office})
       //add let tas = req.body.tas, let bugs = req.body.bugs, tas:tas, bugs:bugs
       await newGrid.save()
-      res.redirect('/testShowGrid')
+      res.redirect('/gridEditor')
+    }
+    catch(e) {
+      next(e)
+    }
+  });
+  app.post('/gridEditor_deletion',
+  async(req,res,next) => {
+    try {
+      let prof_name = req.body.prof_name
+      let courseid = req.body.courseid
+      await Grid.deleteOne({prof_name:prof_name, courseid:courseid})
+      res.redirect('/gridEditor')
     }
     catch(e) {
       next(e)
@@ -178,7 +207,6 @@ router.get('/:id', (req, res) => {
 });
 
  */
-
 
 
 app.listen(app.get("port"), () => {
